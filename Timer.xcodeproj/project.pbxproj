@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2597DD641B57AA4A0007267D /* CircularLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597DD631B57AA4A0007267D /* CircularLayer.m */; };
+		2597DD661B57AE1C0007267D /* hairy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2597DD651B57AE1C0007267D /* hairy.jpg */; };
 		25C7604B1B566AB3006C835C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C7604A1B566AB3006C835C /* main.m */; };
 		25C7604E1B566AB3006C835C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C7604D1B566AB3006C835C /* AppDelegate.m */; };
 		25C760511B566AB3006C835C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C760501B566AB3006C835C /* ViewController.m */; };
@@ -14,6 +16,7 @@
 		25C760561B566AB3006C835C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C760551B566AB3006C835C /* Images.xcassets */; };
 		25C760591B566AB3006C835C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C760571B566AB3006C835C /* LaunchScreen.xib */; };
 		25C760651B566AB3006C835C /* TimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C760641B566AB3006C835C /* TimerTests.m */; };
+		25C760731B5676DA006C835C /* EkLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C760721B5676DA006C835C /* EkLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2597DD621B57AA4A0007267D /* CircularLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularLayer.h; sourceTree = "<group>"; };
+		2597DD631B57AA4A0007267D /* CircularLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularLayer.m; sourceTree = "<group>"; };
+		2597DD651B57AE1C0007267D /* hairy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hairy.jpg; sourceTree = "<group>"; };
 		25C760451B566AB3006C835C /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C760491B566AB3006C835C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C7604A1B566AB3006C835C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +46,8 @@
 		25C7605E1B566AB3006C835C /* TimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C760631B566AB3006C835C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C760641B566AB3006C835C /* TimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimerTests.m; sourceTree = "<group>"; };
+		25C760711B5676DA006C835C /* EkLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EkLoader.h; sourceTree = "<group>"; };
+		25C760721B5676DA006C835C /* EkLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EkLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,11 @@
 				25C7604D1B566AB3006C835C /* AppDelegate.m */,
 				25C7604F1B566AB3006C835C /* ViewController.h */,
 				25C760501B566AB3006C835C /* ViewController.m */,
+				2597DD651B57AE1C0007267D /* hairy.jpg */,
+				2597DD621B57AA4A0007267D /* CircularLayer.h */,
+				2597DD631B57AA4A0007267D /* CircularLayer.m */,
+				25C760711B5676DA006C835C /* EkLoader.h */,
+				25C760721B5676DA006C835C /* EkLoader.m */,
 				25C760521B566AB3006C835C /* Main.storyboard */,
 				25C760551B566AB3006C835C /* Images.xcassets */,
 				25C760571B566AB3006C835C /* LaunchScreen.xib */,
@@ -200,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C760541B566AB3006C835C /* Main.storyboard in Resources */,
+				2597DD661B57AE1C0007267D /* hairy.jpg in Resources */,
 				25C760591B566AB3006C835C /* LaunchScreen.xib in Resources */,
 				25C760561B566AB3006C835C /* Images.xcassets in Resources */,
 			);
@@ -220,6 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C760511B566AB3006C835C /* ViewController.m in Sources */,
+				2597DD641B57AA4A0007267D /* CircularLayer.m in Sources */,
+				25C760731B5676DA006C835C /* EkLoader.m in Sources */,
 				25C7604E1B566AB3006C835C /* AppDelegate.m in Sources */,
 				25C7604B1B566AB3006C835C /* main.m in Sources */,
 			);
@@ -418,6 +434,7 @@
 				25C7606A1B566AB3006C835C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		25C7606B1B566AB3006C835C /* Build configuration list for PBXNativeTarget "TimerTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +443,7 @@
 				25C7606D1B566AB3006C835C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
