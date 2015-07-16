@@ -31,15 +31,14 @@
 
 - (void)viewDidLayoutSubviews {
     CircularLayer *circle2 = [CircularLayer new];
-    circle2.position  = CGPointMake(containerView.bounds.size.width / 2,75);
+    circle2.position  = CGPointMake(containerView.bounds.size.width / 2,70);
     [self.view.layer addSublayer:circle2];
     self.colorContainer.layer.mask = circle2;
 
     self.timeIndicator = [EkLoader new];
     self.timeIndicator.totalTime = 10;
     self.timeIndicator.alpha = 1.0;
-    self.timeIndicator.position = CGPointMake(containerView.bounds.size.width / 2,75);
-    //self.clockFace.time = 50;
+    self.timeIndicator.position = CGPointMake(containerView.bounds.size.width / 2,70);
     [containerView.layer addSublayer:self.timeIndicator];
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1
                                              target:self

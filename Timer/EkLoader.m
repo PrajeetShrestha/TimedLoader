@@ -46,11 +46,8 @@
 
 - (void)display
 {
-   // NSLog(@"time: %f", [self.presentationLayer time]);
-
     //get interpolated time value
     float time = [self.presentationLayer time];
-    
     //create drawing context
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
@@ -62,7 +59,6 @@
 
     if (time > 0) {
         CGFloat angle = (360/self.totalTime) * self.time;
-
         angle = DEGREES_TO_RADIANS(angle);
         CGContextSetLineWidth(ctx, 5);
         CGContextSetAlpha(ctx, self.alpha);
@@ -73,12 +69,10 @@
         CGContextAddArc(ctx, center.x, center.y, kCircleRadius, 0, angle, 0);
         CGContextFillPath(ctx);
         CGContextStrokePath(ctx);
-
         self.contents = (id)UIGraphicsGetImageFromCurrentImageContext().CGImage;
     }
-    
-    UIGraphicsEndImageContext();
 
+    UIGraphicsEndImageContext();
     self.transform = CATransform3DMakeRotation(-90.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
 }
 
