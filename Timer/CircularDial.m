@@ -178,14 +178,4 @@
     UIGraphicsEndImageContext();
     self.transform = CATransform3DMakeRotation(-90.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
 }
-
-
-
-
 @end
-
-
-
-
-
-
