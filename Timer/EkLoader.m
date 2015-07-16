@@ -46,7 +46,7 @@
 
 - (void)display
 {
-    NSLog(@"time: %f", [self.presentationLayer time]);
+   // NSLog(@"time: %f", [self.presentationLayer time]);
 
     //get interpolated time value
     float time = [self.presentationLayer time];
@@ -64,7 +64,6 @@
         CGFloat angle = (360/self.totalTime) * self.time;
 
         angle = DEGREES_TO_RADIANS(angle);
-
         CGContextSetLineWidth(ctx, 5);
         CGContextSetAlpha(ctx, self.alpha);
         CGContextMoveToPoint(ctx, center.x, center.y);
@@ -79,6 +78,8 @@
     }
     
     UIGraphicsEndImageContext();
+
+    self.transform = CATransform3DMakeRotation(-90.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
 }
 
 

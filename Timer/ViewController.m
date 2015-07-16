@@ -30,21 +30,10 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    CircularLayer *circle = [CircularLayer new];
-    circle.position  = CGPointMake(containerView.bounds.size.width / 2,75);
-    [self.view.layer addSublayer:circle];
-    self.blackAndWhitePic.layer.mask = circle;
-
     CircularLayer *circle2 = [CircularLayer new];
     circle2.position  = CGPointMake(containerView.bounds.size.width / 2,75);
     [self.view.layer addSublayer:circle2];
     self.colorContainer.layer.mask = circle2;
-//
-//    CircularLayer *circle1 = [CircularLayer new];
-//    circle1.position  = CGPointMake(containerView.bounds.size.width / 2,75);
-//    [self.view.layer addSublayer:circle1];
-//    self.colorProfilePic.layer.mask = circle1;
-
 
     self.timeIndicator = [EkLoader new];
     self.timeIndicator.totalTime = 10;

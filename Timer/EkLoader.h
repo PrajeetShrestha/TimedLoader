@@ -1,9 +1,6 @@
+
 //
-//  ClockFace.h
-//  ClockFace
-//
-//  Created by Nick Lockwood on 28/04/2014.
-//  Copyright (c) 2014 Charcoal Design. All rights reserved.
+//  Created by Prajeet Shrestha on 13/07/2015.
 //
 
 #import <QuartzCore/QuartzCore.h>
