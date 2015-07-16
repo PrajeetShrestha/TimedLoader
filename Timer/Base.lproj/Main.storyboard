@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKj-MC-Z8j" userLabel="BlackAndWhiteContainer">
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKj-MC-Z8j" userLabel="BlackAndWhiteContainer">
                                 <rect key="frame" x="116" y="28" width="368" height="433"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hairy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Vg1-u2-rve" userLabel="Color">
@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Vg1-u2-rve" secondAttribute="bottom" id="mWw-RI-h4i"/>
                                 </constraints>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCB-hY-lyB" userLabel="ColorContainer">
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCB-hY-lyB" userLabel="ColorContainer">
                                 <rect key="frame" x="116" y="28" width="368" height="433"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hairy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PXq-26-PG3" userLabel="Color">
