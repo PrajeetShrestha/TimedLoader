@@ -21,7 +21,6 @@
 
 #pragma mark CircularLayer
 @interface CircularLayer : CALayer
-
 @end
 
 #pragma mark - EKLoader

@@ -27,7 +27,7 @@
  }
 
 - (void)viewDidLayoutSubviews {
-    dial.frame = CGRectMake(0, 0, 170, 170);
+    dial.frame = CGRectMake(100, 200, 170, 170);
     [dial setUpSubViews];
     [self.view addSubview:dial];
 }
