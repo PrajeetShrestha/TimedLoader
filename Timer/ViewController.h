@@ -10,6 +10,7 @@
 #import "CircularDial.h"
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet CircularDial *dial;
 - (IBAction)play:(id)sender;
 @end
 

@@ -11,24 +11,18 @@
 
 @interface ViewController () {
     NSTimer *timer;
-    CircularDial *dial;
+    // CircularDial *dial;
 }
-@property (nonatomic, strong) CircularLayer *circle;
+
 
 @end
 
 @implementation ViewController
+@synthesize dial;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    dial = [CircularDial new];
-    dial.image = [UIImage imageNamed:@"hairy.jpg"];
 }
-
-- (void)viewDidLayoutSubviews {
-}
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -37,24 +31,27 @@
 
 - (IBAction)play:(id)sender {
     if ([dial getTimeForTimeIndicator] >= dial.totalTime && [dial getTimeForTimeIndicator] > 0) {
-        [dial pauseTimer];
+        dial.timeIndicator.time = 0;
+        [dial playTimer];
     } else {
         if (dial.isPlaying) {
             [dial pauseTimer];
-            [dial invalidateTimer];
         } else {
             [dial playTimer];
             float elapsedTime = [dial getTimeForTimeIndicator];
-            [dial removeFromSuperview];
-            if (elapsedTime > 0) {
-                dial.totalTime = dial.totalTime - elapsedTime;
-            } else {
-                dial.totalTime = 10;
-            }
-            dial.frame = CGRectMake(100, 200, 200, 200);
-            [dial setUpSubViews];
-            [self.view addSubview:dial];
+            [self reinitiateDialWithElapsedTime:elapsedTime];
         }
     }
+}
+
+- (void)reinitiateDialWithElapsedTime:(float)elapsedTime {
+    if (elapsedTime == 0) {
+        dial.totalTime = 10;
+        dial.image = [UIImage imageNamed:@"hairy.jpg"];
+        [dial setUpSubViews];
+    } else {
+        dial.timeIndicator.time = elapsedTime;
+    }
+    [self.view addSubview:dial];
 }
 @end

@@ -13,14 +13,23 @@
     NSTimer *timer;
 
 }
-@property (nonatomic)  EkLoader *timeIndicator;
+
 @end
 @implementation CircularDial
 
 @synthesize blackAndWhiteImageContainer;
 @synthesize colorImageContainer;
 
+
+- (void)awakeFromNib {
+        self.backgroundColor = [UIColor clearColor];
+}
 - (void)setUpSubViews {
+
+    NSArray *subviews = [self subviews];
+    for (UIView *view in subviews){
+        [view removeFromSuperview];
+    }
     blackAndWhiteImageContainer = [UIView new];
     colorImageContainer = [UIView new];
     blackAndWhiteImageView = [UIImageView new];
@@ -48,34 +57,36 @@
 
     [self.layer addSublayer:circle2];
     self.blackAndWhiteImageContainer.layer.mask = circle2;
-
-
     self.timeIndicator = [[EkLoader alloc]initWithFrameHeight:self.frame.size.height];
     self.timeIndicator.totalTime = self.totalTime;
     self.timeIndicator.position = CGPointMake(colorImageContainer.bounds.size.width / 2,self.bounds.size.height/2);
     [blackAndWhiteImageContainer.layer addSublayer:self.timeIndicator];
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.1
-                                             target:self
-                                           selector:@selector(updateTime:)
-                                           userInfo:nil
-                                            repeats:YES];
+
     colorImageContainer.layer.mask = self.timeIndicator;
 }
 
 - (float)getTimeForTimeIndicator {
-    //NSLog(@"Time Value %f",self.timeIndicator.time);
     return self.timeIndicator.time;
 }
 
 - (void)playTimer {
     self.isPlaying = YES;
     self.isPaused = NO;
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                             target:self
+                                           selector:@selector(updateTime:)
+                                           userInfo:nil
+                                            repeats:YES];
+
+    
 }
 
 - (void)pauseTimer {
     self.isPlaying = NO;
     self.isPaused = YES;
+    [timer invalidate];
 }
+
 
 
 #pragma mark - Private Methods
@@ -92,9 +103,6 @@
     return filteredImage;
 }
 
-- (void)invalidateTimer {
-    [timer invalidate];
-}
 
 - (void)updateTime:(NSTimer *)timerPassed {
     if (self.timeIndicator.time >= self.timeIndicator.totalTime) {

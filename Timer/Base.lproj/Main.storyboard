@@ -29,13 +29,26 @@
                                     <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rrm-Az-jfn"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5s-tL-CMe" customClass="CircularDial">
+                                <rect key="frame" x="125" y="120" width="350" height="350"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="1O7-7c-6rq"/>
+                                    <constraint firstAttribute="width" constant="350" id="B5u-3b-VYN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="c5s-tL-CMe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="2Bx-YV-Og3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BLN-D2-fGV" secondAttribute="bottom" constant="40" id="ejZ-vL-0ja"/>
                             <constraint firstAttribute="centerX" secondItem="BLN-D2-fGV" secondAttribute="centerX" id="f0p-SI-eN4"/>
+                            <constraint firstAttribute="centerX" secondItem="c5s-tL-CMe" secondAttribute="centerX" id="r8u-nG-Xrd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dial" destination="c5s-tL-CMe" id="fAI-mB-d3o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

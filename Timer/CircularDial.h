@@ -8,10 +8,12 @@
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
+@class EkLoader;
 
 @interface CircularDial : UIView
 @property (nonatomic) UIView *blackAndWhiteImageContainer;
 @property (nonatomic) UIView *colorImageContainer;
+@property (nonatomic)  EkLoader *timeIndicator;
 @property (nonatomic) UIImage *image;
 @property (nonatomic) float totalTime;
 @property (nonatomic) BOOL isPlaying;
@@ -19,7 +21,6 @@
 
 - (void)setUpSubViews;
 - (float)getTimeForTimeIndicator;
-- (void)invalidateTimer;
 - (void)playTimer;
 - (void)pauseTimer;
 - (void)updateTime:(NSTimer *)timerPassed;
