@@ -8,6 +8,7 @@
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
+#import "BorderLayer.h"
 @class EkLoader;
 
 @interface CircularDial : UIView

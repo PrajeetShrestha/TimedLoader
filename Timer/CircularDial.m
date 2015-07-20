@@ -54,16 +54,22 @@
 
     CircularLayer *circle2 = [[CircularLayer alloc]initWithFrameHeight:self.bounds.size.height];
     circle2.position  = CGPointMake(colorImageContainer.bounds.size.width / 2,self.bounds.size.height/2);
-
     [self.layer addSublayer:circle2];
     self.blackAndWhiteImageContainer.layer.mask = circle2;
+
     self.timeIndicator = [[EkLoader alloc]initWithFrameHeight:self.frame.size.height];
     self.timeIndicator.totalTime = self.totalTime;
     self.timeIndicator.position = CGPointMake(colorImageContainer.bounds.size.width / 2,self.bounds.size.height/2);
     [blackAndWhiteImageContainer.layer addSublayer:self.timeIndicator];
-
     colorImageContainer.layer.mask = self.timeIndicator;
+
+    BorderLayer *borderCircle = [[BorderLayer alloc]initWithFrame:self.bounds];
+    borderCircle.backgroundColor = [UIColor clearColor];
+    [self addSubview:borderCircle];
+
 }
+
+
 
 - (float)getTimeForTimeIndicator {
     return self.timeIndicator.time;
@@ -180,9 +186,9 @@
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     //draw clock face
-    CGContextSetStrokeColorWithColor(ctx, [UIColor darkGrayColor].CGColor);
-    CGContextSetLineWidth(ctx, 2);
-    //CGContextStrokeEllipseInRect(ctx, CGRectInset(self.bounds, 2, 2));
+//    CGContextSetStrokeColorWithColor(ctx, [UIColor darkGrayColor].CGColor);
+//    CGContextSetLineWidth(ctx, 10);
+//    CGContextStrokeEllipseInRect(ctx, CGRectInset(self.bounds, 5, 5));
     CGPoint center = CGPointMake(self.frameHeight/2, self.frameHeight/2);
 
     if (time > 0) {
