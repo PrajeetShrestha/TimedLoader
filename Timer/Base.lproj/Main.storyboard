@@ -2,8 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,72 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKj-MC-Z8j" userLabel="BlackAndWhiteContainer">
-                                <rect key="frame" x="116" y="28" width="368" height="433"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hairy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Vg1-u2-rve" userLabel="Color">
-                                        <rect key="frame" x="0.0" y="0.0" width="368" height="433"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.97087631009999997" green="1" blue="0.80196886150000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.3921568627" green="0.69803921570000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLN-D2-fGV">
+                                <rect key="frame" x="280" y="520" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstItem="Vg1-u2-rve" firstAttribute="leading" secondItem="uKj-MC-Z8j" secondAttribute="leading" id="4UT-El-zr3"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vg1-u2-rve" secondAttribute="trailing" id="FgT-Ha-WtS"/>
-                                    <constraint firstAttribute="width" secondItem="uKj-MC-Z8j" secondAttribute="height" multiplier="271:319" id="ZX9-PL-tAc"/>
-                                    <constraint firstItem="Vg1-u2-rve" firstAttribute="top" secondItem="uKj-MC-Z8j" secondAttribute="top" id="ebR-YT-1Yh"/>
-                                    <constraint firstAttribute="bottom" secondItem="Vg1-u2-rve" secondAttribute="bottom" id="mWw-RI-h4i"/>
+                                    <constraint firstAttribute="height" constant="40" id="Dr3-Hs-zui"/>
+                                    <constraint firstAttribute="width" constant="40" id="G8T-r5-VXN"/>
                                 </constraints>
-                            </view>
-                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCB-hY-lyB" userLabel="ColorContainer">
-                                <rect key="frame" x="116" y="28" width="368" height="433"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hairy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PXq-26-PG3" userLabel="Color">
-                                        <rect key="frame" x="0.0" y="0.0" width="368" height="433"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hairy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="j6S-ZC-F3U" userLabel="Black">
-                                        <rect key="frame" x="0.0" y="0.0" width="368" height="433"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.97087631008556552" green="1" blue="0.80196886148358493" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.3921568627" green="0.69803921570000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="PXq-26-PG3" secondAttribute="bottom" id="6Mc-b2-SFe"/>
-                                    <constraint firstItem="j6S-ZC-F3U" firstAttribute="centerY" secondItem="PXq-26-PG3" secondAttribute="centerY" id="7Sl-lG-a7t"/>
-                                    <constraint firstAttribute="width" secondItem="cCB-hY-lyB" secondAttribute="height" multiplier="271:319" id="Azf-rj-aFI"/>
-                                    <constraint firstAttribute="trailing" secondItem="PXq-26-PG3" secondAttribute="trailing" id="BKW-3e-zc1"/>
-                                    <constraint firstItem="PXq-26-PG3" firstAttribute="leading" secondItem="cCB-hY-lyB" secondAttribute="leading" id="I8Z-pI-8sx"/>
-                                    <constraint firstItem="j6S-ZC-F3U" firstAttribute="width" secondItem="PXq-26-PG3" secondAttribute="width" id="RM4-dT-Lfl"/>
-                                    <constraint firstItem="PXq-26-PG3" firstAttribute="top" secondItem="cCB-hY-lyB" secondAttribute="top" id="cTa-oO-E8F"/>
-                                    <constraint firstItem="j6S-ZC-F3U" firstAttribute="centerX" secondItem="PXq-26-PG3" secondAttribute="centerX" id="jEa-et-2cW"/>
-                                    <constraint firstItem="j6S-ZC-F3U" firstAttribute="height" secondItem="PXq-26-PG3" secondAttribute="height" id="skb-CB-olh"/>
-                                </constraints>
-                            </view>
+                                <state key="normal" image="play.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rrm-Az-jfn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uKj-MC-Z8j" firstAttribute="width" secondItem="cCB-hY-lyB" secondAttribute="width" id="4dd-QZ-puV"/>
-                            <constraint firstItem="cCB-hY-lyB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="8ms-iH-ZMU"/>
-                            <constraint firstItem="uKj-MC-Z8j" firstAttribute="height" secondItem="cCB-hY-lyB" secondAttribute="height" id="HIM-ST-52Y"/>
-                            <constraint firstItem="cCB-hY-lyB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Rub-lR-eee"/>
-                            <constraint firstItem="uKj-MC-Z8j" firstAttribute="width" secondItem="uKj-MC-Z8j" secondAttribute="height" multiplier="271:319" id="aQi-nI-RIn"/>
-                            <constraint firstAttribute="centerX" secondItem="cCB-hY-lyB" secondAttribute="centerX" id="lt1-LO-ZeJ"/>
-                            <constraint firstItem="uKj-MC-Z8j" firstAttribute="centerX" secondItem="cCB-hY-lyB" secondAttribute="centerX" id="nvw-Hq-iKA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cCB-hY-lyB" secondAttribute="trailing" constant="100" id="oDo-oj-rQy"/>
-                            <constraint firstItem="uKj-MC-Z8j" firstAttribute="centerY" secondItem="cCB-hY-lyB" secondAttribute="centerY" id="wYu-91-EHK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BLN-D2-fGV" secondAttribute="bottom" constant="40" id="ejZ-vL-0ja"/>
+                            <constraint firstAttribute="centerX" secondItem="BLN-D2-fGV" secondAttribute="centerX" id="f0p-SI-eN4"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="blackAndWhitePic" destination="Vg1-u2-rve" id="tkT-mk-nun"/>
-                        <outlet property="colorContainer" destination="uKj-MC-Z8j" id="QFM-Ad-Age"/>
-                        <outlet property="containerView" destination="cCB-hY-lyB" id="1nB-bV-3cs"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="199" y="340"/>
         </scene>
     </scenes>
     <resources>
-        <image name="hairy.jpg" width="2560" height="1600"/>
+        <image name="play.png" width="40" height="40"/>
     </resources>
 </document>

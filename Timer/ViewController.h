@@ -10,8 +10,6 @@
 #import "CircularDial.h"
 
 @interface ViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIView *colorContainer;
-@property (weak, nonatomic) IBOutlet UIImageView *blackAndWhitePic;
-
+- (IBAction)play:(id)sender;
 @end
 

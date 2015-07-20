@@ -13,14 +13,14 @@
     NSTimer *timer;
 
 }
- @property (nonatomic)  EkLoader *timeIndicator;
+@property (nonatomic)  EkLoader *timeIndicator;
 @end
 @implementation CircularDial
 
 @synthesize blackAndWhiteImageContainer;
 @synthesize colorImageContainer;
+
 - (void)setUpSubViews {
-    NSLog(@" SELF %@",self);
     blackAndWhiteImageContainer = [UIView new];
     colorImageContainer = [UIView new];
     blackAndWhiteImageView = [UIImageView new];
@@ -43,15 +43,16 @@
     coloredImageView.contentMode = UIViewContentModeScaleAspectFill;
     blackAndWhiteImageView.contentMode = UIViewContentModeScaleAspectFill;
 
-    CircularLayer *circle2 = [CircularLayer new];
-    circle2.position  = CGPointMake(colorImageContainer.bounds.size.width / 2,70);
+    CircularLayer *circle2 = [[CircularLayer alloc]initWithFrameHeight:self.bounds.size.height];
+    circle2.position  = CGPointMake(colorImageContainer.bounds.size.width / 2,self.bounds.size.height/2);
+
     [self.layer addSublayer:circle2];
     self.blackAndWhiteImageContainer.layer.mask = circle2;
 
-    self.timeIndicator = [EkLoader new];
-    self.timeIndicator.totalTime = 10;
-    self.timeIndicator.alpha = 1.0;
-    self.timeIndicator.position = CGPointMake(colorImageContainer.bounds.size.width / 2,70);
+
+    self.timeIndicator = [[EkLoader alloc]initWithFrameHeight:self.frame.size.height];
+    self.timeIndicator.totalTime = self.totalTime;
+    self.timeIndicator.position = CGPointMake(colorImageContainer.bounds.size.width / 2,self.bounds.size.height/2);
     [blackAndWhiteImageContainer.layer addSublayer:self.timeIndicator];
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1
                                              target:self
@@ -61,6 +62,22 @@
     colorImageContainer.layer.mask = self.timeIndicator;
 }
 
+- (float)getTimeForTimeIndicator {
+    //NSLog(@"Time Value %f",self.timeIndicator.time);
+    return self.timeIndicator.time;
+}
+
+- (void)playTimer {
+    self.isPlaying = YES;
+    self.isPaused = NO;
+}
+
+- (void)pauseTimer {
+    self.isPlaying = NO;
+    self.isPaused = YES;
+}
+
+
 #pragma mark - Private Methods
 - (UIImage*) grayishImage: (UIImage*) inputImage {
     // Create a graphic context.
@@ -69,12 +86,14 @@
     // Draw the image with the luminosity blend mode.
     // On top of a white background, this will give a black and white image.
     [inputImage drawInRect:imageRect blendMode:kCGBlendModeLuminosity alpha:1.0];
-
     // Get the resulting image.
     UIImage *filteredImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return filteredImage;
+}
 
+- (void)invalidateTimer {
+    [timer invalidate];
 }
 
 - (void)updateTime:(NSTimer *)timerPassed {
@@ -89,11 +108,12 @@
 
 #pragma mark CircularLayer Implementation
 @implementation CircularLayer
-- (id)init
+- (id)initWithFrameHeight:(float)frameHeight
 {
     if ((self = [super init]))
     {
-        self.bounds = CGRectMake(0, 0, 140, 140);
+        NSLog(@"%f Frame Height",frameHeight);
+        self.bounds = CGRectMake(0, 0, frameHeight, frameHeight);
         [self setNeedsDisplay];
     }
     return self;
@@ -107,20 +127,19 @@
     UIGraphicsEndImageContext();
 }
 
-
-
-
 @end
 
+#pragma mark - EKLoader Implementation
 @implementation EkLoader
 
 @dynamic time;
 
-- (id)init
+- (id)initWithFrameHeight:(float)frameHeight;
 {
     if ((self = [super init]))
     {
-        self.bounds = CGRectMake(0, 0, 140, 140);
+        self.bounds = CGRectMake(0, 0, frameHeight, frameHeight);
+        self.frameHeight = frameHeight;
         [self setNeedsDisplay];
     }
     return self;
@@ -158,21 +177,24 @@
     CGContextSetStrokeColorWithColor(ctx, [UIColor darkGrayColor].CGColor);
     CGContextSetLineWidth(ctx, 2);
     //CGContextStrokeEllipseInRect(ctx, CGRectInset(self.bounds, 2, 2));
-    CGPoint center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+    CGPoint center = CGPointMake(self.frameHeight/2, self.frameHeight/2);
 
     if (time > 0) {
         CGFloat angle = (360/self.totalTime) * self.time;
         angle = DEGREES_TO_RADIANS(angle);
-        CGContextSetLineWidth(ctx, 5);
-        CGContextSetAlpha(ctx, self.alpha);
         CGContextMoveToPoint(ctx, center.x, center.y);
-        CGContextAddLineToPoint(ctx, (int)(center.x + cos(angle) * kCircleRadius),(int)( center.y + sin(angle) * kCircleRadius));
-        CGContextMoveToPoint(ctx, center.x, center.y);
-        CGContextAddLineToPoint(ctx, (int)(center.x + cos(0) * kCircleRadius),(int)( center.y + sin(0) * kCircleRadius));
-        CGContextAddArc(ctx, center.x, center.y, kCircleRadius, 0, angle, 0);
+        CGContextAddArc(ctx, center.x, center.y, (self.frameHeight/2), 0, angle, 0);
         CGContextFillPath(ctx);
-        CGContextStrokePath(ctx);
         self.contents = (id)UIGraphicsGetImageFromCurrentImageContext().CGImage;
+        //CGContextSetLineWidth(ctx, 1);
+        //CGContextSetAlpha(ctx, self.alpha);
+
+        //CGContextAddLineToPoint(ctx, (int)(center.x + cos(angle) * (self.frameHeight/2)),(int)( center.y + sin(angle) * (self.frameHeight/2)));
+        //CGContextMoveToPoint(ctx, center.x, center.y);
+        //CGContextAddLineToPoint(ctx, (int)(center.x + cos(0) * (self.frameHeight/2)),(int)( center.y + sin(0) * (self.frameHeight/2)));
+
+        //CGContextStrokePath(ctx);
+
     }
 
     UIGraphicsEndImageContext();
