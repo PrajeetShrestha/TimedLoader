@@ -77,8 +77,6 @@
                                            selector:@selector(updateTime:)
                                            userInfo:nil
                                             repeats:YES];
-
-    
 }
 
 - (void)pauseTimer {

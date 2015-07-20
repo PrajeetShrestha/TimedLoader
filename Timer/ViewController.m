@@ -46,7 +46,7 @@
 
 - (void)reinitiateDialWithElapsedTime:(float)elapsedTime {
     if (elapsedTime == 0) {
-        dial.totalTime = 10;
+        dial.totalTime = 100; // Set the time in seconds
         dial.image = [UIImage imageNamed:@"hairy.jpg"];
         [dial setUpSubViews];
     } else {
