@@ -11,8 +11,11 @@
     UIImageView *blackAndWhiteImageView;
     UIImageView *coloredImageView;
     NSTimer *timer;
+    EkLoader *hands;
 
 }
+
+@property (nonatomic) EkLoader *hands;
 
 @end
 @implementation CircularDial
@@ -22,7 +25,7 @@
 
 
 - (void)awakeFromNib {
-        self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor clearColor];
 }
 - (void)setUpSubViews {
 
@@ -44,10 +47,10 @@
     coloredImageView.frame = colorImageContainer.bounds;
 
     [blackAndWhiteImageContainer addSubview:blackAndWhiteImageView];
-    blackAndWhiteImageView.image = [self grayishImage:self.image];
+    blackAndWhiteImageView.image = self.image;//[self grayishImage:self.image];
 
     [colorImageContainer addSubview:coloredImageView];
-    coloredImageView.image = self.image;
+    coloredImageView.image = [self grayishImage:self.image];//self.image;
 
     coloredImageView.contentMode = UIViewContentModeScaleAspectFill;
     blackAndWhiteImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -66,6 +69,12 @@
     BorderLayer *borderCircle = [[BorderLayer alloc]initWithFrame:self.bounds];
     borderCircle.backgroundColor = [UIColor clearColor];
     [self addSubview:borderCircle];
+
+    self.hands = [[EkLoader alloc]initWithFrameHeight:self.frame.size.height];
+    self.hands.totalTime = self.totalTime;
+    self.hands.isHand = YES;
+    self.hands.position = CGPointMake(colorImageContainer.bounds.size.width / 2,self.bounds.size.height/2);
+    [blackAndWhiteImageContainer.layer addSublayer:self.hands];
 
 }
 
@@ -91,8 +100,6 @@
     [timer invalidate];
 }
 
-
-
 #pragma mark - Private Methods
 - (UIImage*) grayishImage: (UIImage*) inputImage {
     // Create a graphic context.
@@ -111,9 +118,11 @@
 - (void)updateTime:(NSTimer *)timerPassed {
     if (self.timeIndicator.time >= self.timeIndicator.totalTime) {
         [timerPassed invalidate];
+
         NSLog(@"Timer invalidated");
     }
     self.timeIndicator.time = self.timeIndicator.time + 0.1;
+    self.hands.time = self.hands.time +0.1;
 }
 
 @end
@@ -186,17 +195,31 @@
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     //draw clock face
-//    CGContextSetStrokeColorWithColor(ctx, [UIColor darkGrayColor].CGColor);
-//    CGContextSetLineWidth(ctx, 10);
-//    CGContextStrokeEllipseInRect(ctx, CGRectInset(self.bounds, 5, 5));
+    //    CGContextSetStrokeColorWithColor(ctx, [UIColor darkGrayColor].CGColor);
+    //    CGContextSetLineWidth(ctx, 10);
+    //    CGContextStrokeEllipseInRect(ctx, CGRectInset(self.bounds, 5, 5));
     CGPoint center = CGPointMake(self.frameHeight/2, self.frameHeight/2);
 
     if (time > 0) {
         CGFloat angle = (360/self.totalTime) * self.time;
+
         angle = DEGREES_TO_RADIANS(angle);
-        CGContextMoveToPoint(ctx, center.x, center.y);
-        CGContextAddArc(ctx, center.x, center.y, (self.frameHeight/2), 0, angle, 0);
-        CGContextFillPath(ctx);
+        if (!self.isHand) {
+            CGContextMoveToPoint(ctx, center.x, center.y);
+            CGContextAddArc(ctx, center.x, center.y, (self.frameHeight/2), 0, angle, 0);
+            CGContextFillPath(ctx);
+
+        } else {
+            CGContextSetLineWidth(ctx, 1);
+            CGContextSetStrokeColorWithColor(ctx, [UIColor lightGrayColor].CGColor);
+            CGContextMoveToPoint(ctx, center.x, center.y);
+            CGContextAddLineToPoint(ctx, (int)(center.x + cos(0) * (self.frameHeight/2)),(int)( center.y + sin(0) * (self.frameHeight/2)));
+
+            CGContextMoveToPoint(ctx, center.x, center.y);
+            CGContextAddLineToPoint(ctx, (int)(center.x + 1 + cos(angle) * (self.frameHeight/2 + 20)),(int)( center.y + 1 + sin(angle) * (self.frameHeight/2 + 20)));
+
+            CGContextStrokePath(ctx);
+        }
         self.contents = (id)UIGraphicsGetImageFromCurrentImageContext().CGImage;
         //CGContextSetLineWidth(ctx, 1);
         //CGContextSetAlpha(ctx, self.alpha);
@@ -206,9 +229,9 @@
         //CGContextAddLineToPoint(ctx, (int)(center.x + cos(0) * (self.frameHeight/2)),(int)( center.y + sin(0) * (self.frameHeight/2)));
 
         //CGContextStrokePath(ctx);
-
+        
     }
-
+    
     UIGraphicsEndImageContext();
     self.transform = CATransform3DMakeRotation(-90.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
 }

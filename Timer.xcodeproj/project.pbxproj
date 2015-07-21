@@ -10,6 +10,8 @@
 		257022FE1B5C9F8A005814BE /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 257022FD1B5C9F8A005814BE /* play.png */; };
 		2597DD661B57AE1C0007267D /* hairy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2597DD651B57AE1C0007267D /* hairy.jpg */; };
 		2597DD691B57C3ED0007267D /* CircularDial.m in Sources */ = {isa = PBXBuildFile; fileRef = 2597DD681B57C3ED0007267D /* CircularDial.m */; };
+		259C72C51B5DFD4D0072895A /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 259C72C41B5DFD4D0072895A /* UIImage+ImageEffects.m */; };
+		259C72C71B5E00170072895A /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 259C72C61B5E00170072895A /* test.jpg */; };
 		25BFFC4E1B5CE9AD005FC0D0 /* BorderLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25BFFC4D1B5CE9AD005FC0D0 /* BorderLayer.m */; };
 		25C7604B1B566AB3006C835C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C7604A1B566AB3006C835C /* main.m */; };
 		25C7604E1B566AB3006C835C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C7604D1B566AB3006C835C /* AppDelegate.m */; };
@@ -35,6 +37,9 @@
 		2597DD651B57AE1C0007267D /* hairy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hairy.jpg; sourceTree = "<group>"; };
 		2597DD671B57C3ED0007267D /* CircularDial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularDial.h; sourceTree = "<group>"; };
 		2597DD681B57C3ED0007267D /* CircularDial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularDial.m; sourceTree = "<group>"; };
+		259C72C31B5DFD4D0072895A /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		259C72C41B5DFD4D0072895A /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		259C72C61B5E00170072895A /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		25BFFC4C1B5CE9AD005FC0D0 /* BorderLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderLayer.h; sourceTree = "<group>"; };
 		25BFFC4D1B5CE9AD005FC0D0 /* BorderLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderLayer.m; sourceTree = "<group>"; };
 		25C760451B566AB3006C835C /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,8 +100,11 @@
 				25C7604D1B566AB3006C835C /* AppDelegate.m */,
 				25C7604F1B566AB3006C835C /* ViewController.h */,
 				25C760501B566AB3006C835C /* ViewController.m */,
+				259C72C61B5E00170072895A /* test.jpg */,
 				2597DD671B57C3ED0007267D /* CircularDial.h */,
 				2597DD681B57C3ED0007267D /* CircularDial.m */,
+				259C72C31B5DFD4D0072895A /* UIImage+ImageEffects.h */,
+				259C72C41B5DFD4D0072895A /* UIImage+ImageEffects.m */,
 				25BFFC4C1B5CE9AD005FC0D0 /* BorderLayer.h */,
 				25BFFC4D1B5CE9AD005FC0D0 /* BorderLayer.m */,
 				2597DD651B57AE1C0007267D /* hairy.jpg */,
@@ -216,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C760541B566AB3006C835C /* Main.storyboard in Resources */,
+				259C72C71B5E00170072895A /* test.jpg in Resources */,
 				2597DD661B57AE1C0007267D /* hairy.jpg in Resources */,
 				25C760591B566AB3006C835C /* LaunchScreen.xib in Resources */,
 				257022FE1B5C9F8A005814BE /* play.png in Resources */,
@@ -239,6 +248,7 @@
 			files = (
 				25BFFC4E1B5CE9AD005FC0D0 /* BorderLayer.m in Sources */,
 				25C760511B566AB3006C835C /* ViewController.m in Sources */,
+				259C72C51B5DFD4D0072895A /* UIImage+ImageEffects.m in Sources */,
 				25C7604E1B566AB3006C835C /* AppDelegate.m in Sources */,
 				2597DD691B57C3ED0007267D /* CircularDial.m in Sources */,
 				25C7604B1B566AB3006C835C /* main.m in Sources */,

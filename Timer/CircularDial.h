@@ -10,7 +10,6 @@
 #import <UIKit/UIKit.h>
 #import "BorderLayer.h"
 @class EkLoader;
-
 @interface CircularDial : UIView
 @property (nonatomic) UIView *blackAndWhiteImageContainer;
 @property (nonatomic) UIView *colorImageContainer;
@@ -36,6 +35,7 @@
 #pragma mark - EKLoader
 @interface EkLoader: CALayer
 @property (nonatomic) float frameHeight;
+@property (nonatomic) BOOL isHand;
 - (id)initWithFrameHeight:(float)frameHeight;
 
 @property (nonatomic, assign) float time;
