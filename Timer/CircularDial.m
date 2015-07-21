@@ -11,14 +11,13 @@
     UIImageView *blackAndWhiteImageView;
     UIImageView *coloredImageView;
     NSTimer *timer;
-    EkLoader *hands;
-
 }
 
 @property (nonatomic) EkLoader *hands;
 
 @end
 @implementation CircularDial
+
 
 @synthesize blackAndWhiteImageContainer;
 @synthesize colorImageContainer;
@@ -33,13 +32,15 @@
     for (UIView *view in subviews){
         [view removeFromSuperview];
     }
+
+    CGRect insetRect  = CGRectInset(self.bounds, 10, 10);
     blackAndWhiteImageContainer = [UIView new];
     colorImageContainer = [UIView new];
     blackAndWhiteImageView = [UIImageView new];
     coloredImageView = [UIImageView new];
 
-    blackAndWhiteImageContainer.frame = self.bounds;
-    colorImageContainer.frame = self.bounds;
+    blackAndWhiteImageContainer.frame = insetRect;
+    colorImageContainer.frame = insetRect;
     [self addSubview:blackAndWhiteImageContainer];
     [self addSubview:colorImageContainer];
 
@@ -55,26 +56,26 @@
     coloredImageView.contentMode = UIViewContentModeScaleAspectFill;
     blackAndWhiteImageView.contentMode = UIViewContentModeScaleAspectFill;
 
-    CircularLayer *circle2 = [[CircularLayer alloc]initWithFrameHeight:self.bounds.size.height];
-    circle2.position  = CGPointMake(colorImageContainer.bounds.size.width / 2,self.bounds.size.height/2);
+    CircularLayer *circle2 = [[CircularLayer alloc]initWithFrameHeight:insetRect.size.height];
+    circle2.position  = CGPointMake(colorImageContainer.bounds.size.width / 2,insetRect.size.height/2);
     [self.layer addSublayer:circle2];
     self.blackAndWhiteImageContainer.layer.mask = circle2;
 
-    self.timeIndicator = [[EkLoader alloc]initWithFrameHeight:self.frame.size.height];
+    self.timeIndicator = [[EkLoader alloc]initWithFrameHeight:insetRect.size.height];
     self.timeIndicator.totalTime = self.totalTime;
-    self.timeIndicator.position = CGPointMake(colorImageContainer.bounds.size.width / 2,self.bounds.size.height/2);
+    self.timeIndicator.position = CGPointMake(colorImageContainer.bounds.size.width / 2,insetRect.size.height/2);
     [blackAndWhiteImageContainer.layer addSublayer:self.timeIndicator];
     colorImageContainer.layer.mask = self.timeIndicator;
 
-    BorderLayer *borderCircle = [[BorderLayer alloc]initWithFrame:self.bounds];
+    BorderLayer *borderCircle = [[BorderLayer alloc]initWithFrame:insetRect];
     borderCircle.backgroundColor = [UIColor clearColor];
     [self addSubview:borderCircle];
 
-    self.hands = [[EkLoader alloc]initWithFrameHeight:self.frame.size.height];
+    self.hands = [[EkLoader alloc]initWithFrameHeight:self.bounds.size.height];
     self.hands.totalTime = self.totalTime;
     self.hands.isHand = YES;
-    self.hands.position = CGPointMake(colorImageContainer.bounds.size.width / 2,self.bounds.size.height/2);
-    [blackAndWhiteImageContainer.layer addSublayer:self.hands];
+    self.hands.position = CGPointMake(self.bounds.size.width / 2,self.bounds.size.height/2);
+    [self.layer addSublayer:self.hands];
 
 }
 
@@ -92,6 +93,11 @@
                                            selector:@selector(updateTime:)
                                            userInfo:nil
                                             repeats:YES];
+    if (self.hands.superlayer == nil) {
+        [self.layer addSublayer:self.hands];
+    }
+
+
 }
 
 - (void)pauseTimer {
@@ -117,10 +123,12 @@
 
 - (void)updateTime:(NSTimer *)timerPassed {
     if (self.timeIndicator.time >= self.timeIndicator.totalTime) {
+        [self.hands removeFromSuperlayer];
         [timerPassed invalidate];
 
         NSLog(@"Timer invalidated");
     }
+    self.hands.opacity = 1.0f;
     self.timeIndicator.time = self.timeIndicator.time + 0.1;
     self.hands.time = self.hands.time +0.1;
 }
@@ -208,28 +216,23 @@
             CGContextMoveToPoint(ctx, center.x, center.y);
             CGContextAddArc(ctx, center.x, center.y, (self.frameHeight/2), 0, angle, 0);
             CGContextFillPath(ctx);
-
         } else {
             CGContextSetLineWidth(ctx, 1);
-            CGContextSetStrokeColorWithColor(ctx, [UIColor lightGrayColor].CGColor);
-            CGContextMoveToPoint(ctx, center.x, center.y);
-            CGContextAddLineToPoint(ctx, (int)(center.x + cos(0) * (self.frameHeight/2)),(int)( center.y + sin(0) * (self.frameHeight/2)));
-
-            CGContextMoveToPoint(ctx, center.x, center.y);
-            CGContextAddLineToPoint(ctx, (int)(center.x + 1 + cos(angle) * (self.frameHeight/2 + 20)),(int)( center.y + 1 + sin(angle) * (self.frameHeight/2 + 20)));
-
+            CGFloat offset = 20;
+            CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
+            CGContextMoveToPoint(ctx, (int)(center.x  + cos(0) * (self.frameHeight/2 - offset)),(int)( center.y + sin(0) * (self.frameHeight/2 - offset)));
+            CGContextAddLineToPoint(ctx, (int)(center.x + cos(0) * (self.frameHeight/2 - 7)),(int)( center.y + sin(0) * (self.frameHeight/2 - 7)));
+            CGContextMoveToPoint(ctx, (int)(center.x + cos(angle) * (self.frameHeight/2 - offset)),(int)( center.y + sin(angle) * (self.frameHeight/2 - offset)));
+            CGContextAddLineToPoint(ctx, (int)(center.x + cos(angle) * (self.frameHeight/2 - 7 )),(int)( center.y  + sin(angle) * (self.frameHeight/2 - 7 )));
             CGContextStrokePath(ctx);
         }
         self.contents = (id)UIGraphicsGetImageFromCurrentImageContext().CGImage;
         //CGContextSetLineWidth(ctx, 1);
         //CGContextSetAlpha(ctx, self.alpha);
-
         //CGContextAddLineToPoint(ctx, (int)(center.x + cos(angle) * (self.frameHeight/2)),(int)( center.y + sin(angle) * (self.frameHeight/2)));
         //CGContextMoveToPoint(ctx, center.x, center.y);
         //CGContextAddLineToPoint(ctx, (int)(center.x + cos(0) * (self.frameHeight/2)),(int)( center.y + sin(0) * (self.frameHeight/2)));
-
         //CGContextStrokePath(ctx);
-        
     }
     
     UIGraphicsEndImageContext();
